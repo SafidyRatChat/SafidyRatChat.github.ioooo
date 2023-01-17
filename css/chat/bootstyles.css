@@ -150,13 +150,14 @@
     display: flex;
     align-items: baseline;
     padding: 10px 15px;
-    align-items: center;
+  
     margin-top: 19px;
     bottom: 0;
   }
   .chat-box-tray input {
     margin: 0 10px;
     padding: 6px 2px;
+    align-items: flex-end  ;
   }
   .chat-box-tray i {
     color: grey;

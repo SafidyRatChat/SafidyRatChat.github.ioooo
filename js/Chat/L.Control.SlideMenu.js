@@ -35,7 +35,7 @@ L.Control.SlideMenu = L.Control.extend({
         link.title = 'Menu';
         L.DomUtil.create('span', this.options.icon, link);
 
-        this._menu = L.DomUtil.create('div', 'leaflet-menu col-12 col-md-6 ', map._container);
+        this._menu = L.DomUtil.create('div', 'leaflet-menu col-12 col-md-6  align-items-baseline', map._container);
 
         this._menu.style.width = this.options.width;
         this._menu.style.height = this.options.height;

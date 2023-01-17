@@ -9,20 +9,21 @@
     cursor: default;
     z-index: 9999;
     box-shadow: #222 -1px -1px 20px 0px;
-    height: fit-content;
+    align-items: flex-end;
+  
 
-    min-width: 20em;
-    min-height: 20em
 }
 
 .leaflet-menu-contents {
-    padding: 10px;
+    align-items: flex-end;
+
 }
 
 .leaflet-menu::-webkit-scrollbar{
     width: 7px;
     height: 7px;
     background: #f2f2f2;
+    align-items: flex-end;
     
   
     

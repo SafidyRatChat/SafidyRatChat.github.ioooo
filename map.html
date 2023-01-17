@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+
+<title>MAP</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/dropdown.css" type="text/css" media="all">
+
+  
+    <meta charset="utf-8">
+  
+    <style>
+
+#map {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        font-weight: 400;
+      }
+
+      .content {
+        margin: 0.25rem;
+        border-top: 1px solid #000;
+        padding-top: 0.5rem;
+      }
+
+      .header {
+        font-size: 1.8rem;
+        color: #7f7f7f;
+      }
+
+      .title {
+        font-size: 1.1rem;
+        color: #7f7f7f;
+        font-weight: bold;
+      }
+
+      .bottom {
+        margin-top: 64px;
+        font-size: 0.8rem;
+        color: #7f7f7f;
+      }
+
+      body, html { margin:0; padding:0; height:100%;}
+      body { font-family:sans-serif; }
+      body * { font-weight:200;}
+      h1 { position:absolute; background:white; padding:10px;}
+     
+      .leaflet-container {
+        background: rgba(0,0,0,.8) !important;
+      }
+      h1 { position:absolute; background:black; color:white; padding:10px; font-weight:200; z-index:10000;}
+      #all-examples-info { position:absolute; background:white; font-size:16px; padding:20px; top:100px; width:350px; line-height:150%; border:1px solid rgba(0,0,0,.2);}
+    </style>
+    
+       <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"  />-->
+
+       
+       <link rel="stylesheet" href="css/leaflet.css"  />
+       <link rel="stylesheet" href="css/L.Control.Layers.Tree.css"  />
+       <link rel="stylesheet" href="css/loader.css">
+      
+
+ 
+   <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script>
+   <script src="js/ActiveLayers.js"></script>
+
+   <script
+   type="text/javascript"
+    src="https://unpkg.com/leaflet-contour@1.0.0/dist/leaflet-contour.min.js"
+  ></script>
+
+   <script src="js/SelectLayers.js"></script>
+   <script src="js/L.Control.Layers.Tree.js"></script>
+
+
+
+   <script src="js/heatmap.js"></script>
+   <script src="js/leaflet-heatmap.js"></script>
+
+   <!--<script src="https://leaflet.calvinmetcalf.com/jam/shp/dist/shp.js"></script>-->
+
+   <script src="js/shp.js"></script>
+   <script src="js/proj4.js"></script>
+   <script src="js/leaflet.shpfile.js"></script>
+
+  
+
+   <script src="js/heatmapscript/leaflet-heat.js"></script>
+
+   <script src="https://unpkg.com/georaster-layer-for-leaflet@0.4.1/georaster-layer-for-leaflet.browserify.min.js"></script>
+   <script src="https://unpkg.com/georaster-layer-for-leaflet@0.4.1/georaster-layer-for-leaflet.bundle.js"></script>
+   <script src="https://unpkg.com/georaster-layer-for-leaflet@0.4.1/georaster-layer-for-leaflet.js"></script>
+   <script src="https://unpkg.com/georaster-layer-for-leaflet@0.4.1/georaster.browser.bundle.js"></script>
+
+   <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+
+  <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
+<script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
+
+
+<link rel="stylesheet" href="css/chat/styles2.css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/chat/L.Control.SlideMenu.css" />
+<script src="js/Chat/L.Control.SlideMenu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="./js/Slidemenucontent/sourcedoc.js"></script>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+  
+
+
+
+
+ 
+  
+
+ 
+
+
+</head>
+
+  <body >
+   
+    
+ 
+    
+    <!-- scripts -->
+  </div> 
+
+   <div  id="map">
+    <div class="loader" id="load">Loading...</div>
+    By Safidy.Rat
+   </div>
+
+
+   <script type="text/javascript" src="./js/datareader.js"></script>
+
+  
+
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-authentification.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  
+
+    <script>
+
+    
+
+
+
+
+/// spliting correction data
+function display(){
+
+
+ 
+
+ 
+
+
+
+
+      
+
+
+var mbAttr = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+
+var mbUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+
+var baseLayer = L.tileLayer(mbUrl, {
+id: 'mapbox.streets',
+attribution: mbAttr
+});
+
+
+
+
+
+      var cfg = {
+        // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+    
+        "radius":  1,
+        "maxOpacity": .3,
+    
+        // scales the radius based on map zoom
+        "scaleRadius": true, 
+        // if set to false the heatmap uses the global maximum for colorization
+        // if activated: uses the data maximum within the current map boundaries 
+        //   (there will always be a red spot with useLocalExtremas true)
+        "useLocalExtrema": false,
+        // which field name in your data represents the latitude - default "lat"
+        latField: 'lat',
+        // which field name in your data represents the longitude - default "lng"
+        lngField: 'lng',
+        // which field name in your data represents the data value - default "value"
+        valueField: 'count'
+      };
+
+     
+
+
+      var cfg2 = {
+       
+
+        "gradient": {
+            0.85: 'blue',
+            0.92:"green",
+            0.98: 'yellow',
+            1: 'red'
+        },
+
+        
+        // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+        "radius":0.5,
+        "maxOpacity": .3, 
+
+
+
+
+
+
+
+
+        
+    
+        // scales the radius based on map zoom
+        "scaleRadius":true, 
+        // if set to false the heatmap uses the global maximum for colorization
+        // if activated: uses the data maximum within the current map boundaries 
+        //   (there will always be a red spot with useLocalExtremas true)
+        "useLocalExtrema":true,
+      
+       
+
+     
+        // which field name in your data represents the latitude - default "lat"
+        latField: 'lat',
+        // which field name in your data represents the longitude - default "lng"
+        lngField: 'lng',
+        // which field name in your data represents the data value - default "value"
+        valueField: 'count'
+      };
+
+    
+
+      var cfg3 = {
+        "gradient": {
+            0.85: 'blue',
+            0.92:"green",
+            0.98: 'yellow',
+            1: 'red'
+        },
+        // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+        "radius": 0.05,
+        "maxOpacity": 0.4, 
+        // scales the radius based on map zoom
+        "scaleRadius": true, 
+        // if set to false the heatmap uses the global maximum for colorization
+        // if activated: uses the data maximum within the current map boundaries 
+        //   (there will always be a red spot with useLocalExtremas true)
+        "useLocalExtrema": true,
+        // which field name in your data represents the latitude - default "lat"
+        latField: 'lat',
+        // which field name in your data represents the longitude - default "lng"
+        lngField: 'lng',
+        // which field name in your data represents the data value - default "value"
+        valueField: 'count',
+      
+      };
+
+
+      var heatmapLayer3 = new HeatmapOverlay(cfg3);
+       heatmapLayer3.setData(testData[2]);
+
+      /*var heatmapLayer2 = new HeatmapOverlay(cfg2);
+       heatmapLayer2.setData(testData[1]);*/
+
+    
+
+
+
+
+
+
+      var heatmapLayer = new HeatmapOverlay(cfg);
+      heatmapLayer.setData(testData[0]);
+
+
+      var center = [37.78791180770003, -122.40962505340575];
+
+/*
+      var map = new L.Map('map', {
+        center: new L.LatLng(-19.5, 44),
+        zoom: 6,
+        layers: baseLayer
+      });*/
+
+      var map = new L.Map('map', {
+        center: new L.LatLng(-19.5, 44),
+        zoom: 6,
+        layers: baseLayer
+      });
+
+///////////////////////////////////////////////
+let polylineMeasure = L.control.polylineMeasure();
+polylineMeasure.addTo (map);
+      /////////
+     
+      docsource(map);
+   
+/////////////////////configure chatttinnnng
+function sendMessage(e) {
+    e.preventDefault();
+  
+    // get values to be submitted
+    const timestamp = Date.now();
+    const messageInput = document.getElementById("message-input");
+    const message = messageInput.value;
+  
+    // clear the input box
+    messageInput.value = "";
+  
+    //auto scroll to bottom
+    document
+      .getElementById("mymsg")
+      .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+  
+    // create db collection and send in the data
+
+
+
+    ///time
+   
+
+//var datte =new Date().toLocaleString();
+
+    ///////////
+
+    var datte= new Date().toUTCString();
+    db.ref("messages/" + timestamp).set({
+      username,
+      message,
+      datte,
+    });
+  }
+
+
+const left = '<div class="header">Slide Menu (Left)</div>';
+const right = '<div class="header"></div>';
+    let contents = `
+
+
+    <div class="containerc clearfix">
+    
+    <div class="chat">
+      <div class="chat-history">
+        <ul id="mymsg">
+          
+          
+         
+          
+          <li>
+            
+            <ull  id="messages"></ull>
+          </li>
+          
+        
+          
+        </ul>
+        
+      </div> <!-- end chat-history -->
+      
+      <div class="chat-message " id="message-form">
+        <textarea name="message-to-send" id="message-input" placeholder ="Type your message" rows="3"></textarea>
+        <!-->        
+          <!-- <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+        <i class="fa fa-file-image-o"></i>
+        -->
+       
+        <button  id="message-btn" type="submit" class="fa-solid fa-paper-plane"></button>
+      </div> <!-- end chat-message -->
+      
+    </div> <!-- end chat -->
+    
+  </div> <!-- end container -->
+    
+  
+
+   
+    `;
+   
+
+/*
+    <div id="chat" >
+        <!-- messages will display here -->
+        <ull class="message my-message" id="messages"></ull>
+  
+        <form id="message-form">
+          <input id="message-input" type="text" />
+          <button id="message-btn" type="submit">Send</button>
+        </form>
+      </div>*/
+      /* left */
+    
+      /*const slideMenu = L.control
+        .slideMenu("", {
+          width: "1000px",
+          height: "50%",
+          delay: "50",
+         
+        })
+        .addTo(map);  */
+      L.control.slideMenu(right+ contents, {
+          position: 'topleft',
+          menuposition: 'topleft',
+          width: "35%",
+          height: "75%",
+          delay: "50",
+          
+         
+        }).addTo(map);
+
+    
+
+     
+
+
+
+
+
+    
+        const firebaseConfig = {
+    apiKey: "AIzaSyDJoAthfAwVbe5UDQ2VdnvCt08BzwiZj04",
+    authDomain: "ligne-de-base.firebaseapp.com",
+    projectId: "ligne-de-base",
+    storageBucket: "ligne-de-base.appspot.com",
+    messagingSenderId: "917214705951",
+    appId: "1:917214705951:web:09ad011d31c1726779182a",
+    measurementId: "G-XW0TFM93HK"
+  };
+  
+
+  // Initialize Firebase
+  const app= firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  const db = firebase.database();
+
+  
+   
+  ////////////////////////////
+
+
+  function googleProvider() {
+
+  // [START auth_google_provider_create]
+  var provider = new firebase.auth.GoogleAuthProvider();
+  // [END auth_google_provider_create]
+
+  // [START auth_google_provider_scopes]
+  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  // [END auth_google_provider_scopes]
+  
+  // [START auth_google_provider_params]
+  provider.setCustomParameters({
+    'login_hint': 'user@example.com'
+  });
+  // [END auth_google_provider_params]
+  googleSignInPopup(provider);
+}
+
+function googleSignInPopup(provider) {
+  // [START auth_google_signin_popup]
+  firebase.auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+     
+      // The email of the user's account used.
+      var email = error.email;
+     
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+  }
+
+
+   /////////
+
+   document.getElementById("message-btn").addEventListener("click", sendMessage);
+
+
+
+   //fucntion for seeging msg
+   var username = localStorage.getItem("displayname");
+
+
+
+  //receiving msg
+  const fetchChat = db.ref("messages/");
+
+fetchChat.on("child_added", function (snapshot) {
+    const messages = snapshot.val();
+  
+   
+        if(username == messages.username ){
+          const message = `
+          <li class="clearfix">
+            <div class="message-data align-right">
+              <span class="message-data-time" >${messages.datte}</span> &nbsp; &nbsp;
+              <span class="message-data-name" >${messages.username}</span> <i class="fa fa-circle me"></i>
+              
+            </div>
+            <div class="message other-message float-right">
+              ${messages.message}
+            </div>
+          </li>
+          `
+          document.getElementById("mymsg").innerHTML += message;
+
+        }
+
+        else{
+          const message = `
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> ${messages.username}</span>
+              <span class="message-data-time">${messages.datte}</span>
+            </div>
+            <div class="message my-message">
+              ${messages.message}
+            </div>
+          </li>
+          `
+          document.getElementById("mymsg").innerHTML += message;
+        }
+    // append the message on the page
+
+  });
+  
+
+
+    
+
+     
+
+   
+
+
+
+
+
+
+
+///////////////////////////////////////////TURF/////////////////////////////////////////////////
+
+// Creat Bufffffre////////////////////////////////////////////////////
+
+var Pbp=[];
+for(let h=0; h<=76;h++){
+ 
+  var latln=[Longpb[h],Latpb[h]];
+  Pbp.push(latln);
+}
+
+Pbp.push(Pbp[0]);
+
+var line = {
+  "type": "Feature",
+  "properties": {
+    "color": "blue"
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": Pbp
+    /*[
+      [-122.40447521209718,
+        37.79367718768535
+     
+    ]*/
+  }
+};
+
+
+
+var poly1=L.geoJSON(line, {
+  style: function(feature) {
+    return {
+      color: feature.properties.color
+    };
+  }
+}).addTo(map);
+
+var polygon = turf.buffer(line, 0.015, {
+  units: 'kilometres',
+  steps: 15
+});
+
+
+
+var poly2=L.geoJSON(polygon, {
+  style: function(feature) {
+    return {
+      color: feature.properties.color
+    };
+  }
+}).addTo(map);
+//.addTo(map)
+
+//////turf difference///////////////////////////////////////////////////
+
+var polygon1 = turf.polygon([Pbp], {
+  "fill": "#F00",
+  "fill-opacity": 0.1
+});
+var buffpoint=polygon.geometry.coordinates[0];
+buffpoint.push(buffpoint[0]);
+
+
+var polygon2 = turf.polygon([buffpoint], {
+  "fill": "#00F",
+  "fill-opacity": 0.1
+});
+
+
+var difference = turf.difference(polygon2, polygon1);
+
+
+
+//var difference = turf.difference(polygon, line);
+var diff=L.geoJSON(difference, {
+  style: function(feature) {
+    return {
+      color: "#00F"
+    };
+  }
+}).addTo(map);
+//difference.addTo(map);
+
+////ile//////////////////////////////////////////////////////////
+
+var overlaysTree =[ {
+            label: 'Couche vecteur et raster',
+            selectAllCheckbox: 'Un/select all',
+            children: [
+                {label: '<div id="onlysel"></div>'},
+        
+                {label: 'Ligne de Base', layer:poly1},
+                {label: 'Incertitude (15 metres)', layer:poly2 }, 
+                
+            ]
+        },
+      
+      ];
+
+
+
+var il="./geoid/Iles.zip";
+var readeril  = new XMLHttpRequest();
+var shapfile_iles;
+
+
+
+
+function loadiles(){
+     
+    readeril.open("get",il, true);
+    readeril.onreadystatechange=  storedata_iles;
+    readeril.send(null);
+   
+   }
+
+function storedata_iles (){
+
+    if(readeril.readyState==4) {
+      var cnt=readeril.responseURL;
+ 
+  
+
+      shapfile_iles = new L.Shapefile(cnt, {         
+style: {
+    "color": "#000000",
+    "fill": "none",
+    "weight": 2
+  },
+
+ 
+  
+  onEachFeature: function(feature, layer) {
+    //layer.bindPopup(feature.properties.Nom, {permanent: true, opacity: 0.5}).openPopup();
+    layer.bindTooltip(feature.properties.Nom,{permanent:true}).openTooltip();
+  
+
+    if (feature.properties && feature.properties.name) {
+
+           
+            label = String(feature.properties.name);
+
+        
+            //layer.bindPopup(feature.properties.name).openTooltip();
+            var element = document.getElementById(".leaflet-tooltip");
+        
+
+        }
+
+
+      }
+
+  
+});
+shapfile_iles.addTo(map);
+var objchild={label: 'Iles autours', layer:shapfile_iles};
+overlaysTree[0].children.push(objchild);
+
+
+////
+loadfunctionZE();
+    }
+    }
+
+
+    loadiles();
+    
+
+
+
+
+function loadfunctionZE(){
+var ZE='./geoid/eez.zip'
+var readerze  = new XMLHttpRequest();
+var shapfile_ze;
+
+
+
+/////Actuelle ZE///////////////////////
+function loadze(){
+     
+    readerze.open("get", ZE, true);
+    readerze.onreadystatechange=  storedata_ze;
+    readerze.send(null);
+   
+   }
+
+function storedata_ze (){
+
+    if(readerze.readyState==4) {
+      var cnt=readerze.responseURL;
+      shapfile_ze = new L.Shapefile(cnt, {         
+style: {
+    "color": "#000000",
+    "fill": "none",
+    "weight": 2
+  },
+
+ 
+  
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup("ZEE", {permanent: true, opacity: 0.5}).openTooltip();
+  
+
+    if (feature.properties && feature.properties.name) {
+
+           
+            label = String(feature.properties.name);
+
+        
+            //layer.bindPopup(feature.properties.name).openTooltip();
+            var element = document.getElementById(".leaflet-tooltip");
+          
+            //element.classList.remove("background-color");
+
+            layer.bindPopup("layer.feature.properties.name", {permanent: false, opacity: 0.5}).openTooltip();
+
+        }
+
+
+
+      }
+
+  
+});
+
+shapfile_ze.addTo(map);
+var objchild1={label: 'ZEE', layer:shapfile_ze};
+overlaysTree[0].children.push(objchild1);
+
+loadfunctionPb();
+    }
+  }
+
+  loadze();
+}
+
+
+
+
+
+
+function loadfunctionPb(){
+
+
+
+  var Pb_final='./geoid/pb_final.zip';
+var readerpb  = new XMLHttpRequest();
+var shapfile_pb;
+
+
+
+
+function loadpb(){
+     
+    readerpb.open("get", Pb_final, true);
+    readerpb.onreadystatechange=  storedata_pb;
+    readerpb.send(null);
+   
+   }
+
+function storedata_pb (){
+
+    if(readerpb.readyState==4) {
+      var cnt=readerpb.responseURL;
+      shapfile_pb = new L.Shapefile(Pb_final, {         
+style: {
+    "color": "#000000",
+    "fill": "none",
+    "weight": 2
+  },
+
+ 
+  
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(layer.feature.properties.name, {permanent: true, opacity: 0.5}).openTooltip();
+    
+
+      }
+
+  
+});
+
+shapfile_pb.addTo(map);
+var objchild2={label: 'Points de Base', layer:shapfile_pb};
+overlaysTree[0].children.push(objchild2);
+
+
+loadsomezee();
+
+    }
+  }
+
+  loadpb();
+
+}
+
+////////////////load sevrallle zeeeeeeeeeee offcial zeee/////////////////////////////////////////////////////////////
+
+function loadsomezee(){
+ 
+
+
+  var ZEE_files=['./zee_shap/seychelle_zee.zip','./Pb_shap/seychellPB.zip'];
+
+var readerzee  = new XMLHttpRequest();
+var shapfile_zee=[];
+
+
+var i=0;
+
+function loadzee(){
+     
+  readerzee.open("get", ZEE_files[i], true);
+  readerzee.onreadystatechange=  storedata_zee;
+  readerzee.send(null);
+   
+   }
+   var labell;
+function storedata_zee (){
+
+    if(readerzee.readyState==4) {
+   
+      var cnt=readerzee.responseURL;
+    
+      
+
+ 
+
+function loasshp(){
+  
+}
+      shapfile_zee= new L.Shapefile(ZEE_files[i], {         
+style: {
+    "color": "#000000",
+    "fill": "none",
+    "weight": 2
+  },
+
+ 
+  
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(layer.feature.properties.geoname, {permanent: true, opacity: 0.5}).openTooltip();
+  
+
+      }
+   
+
+});
+
+if(i==0){
+  labell="Seychelles ZEE"
+
+var objchild2={label: labell, layer:shapfile_zee};
+    overlaysTree[0].children.push(objchild2);
+shapfile_zee.addTo(map);
+}
+
+ if(i==1){
+  labell="Seychelles Points de Base"
+  var objchild2={label: labell, layer:shapfile_zee};
+    overlaysTree[0].children.push(objchild2);
+    shapfile_zee.addTo(map);
+}
+
+if(i<1){
+  i=i+1;
+  loadzee();
+}
+
+else{
+
+document.getElementById("load").style.display = "none";
+Allfollowing();
+
+}
+
+
+ 
+
+
+
+
+
+
+
+
+
+    }
+  }
+
+  loadzee();
+
+}
+    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     function Allfollowing(){
+
+      var command3 = L.control({position: 'topleft'});
+
+    command3.onAdd = function (map) {
+    var div = L.DomUtil.create('div');
+    div.innerHTML = `
+    <div id="tooltip" value="test overlapping"> </div>`; 
+    return div;
+        
+};
+command3.addTo(map);
+
+var tooltip = document.querySelector('#tooltip');
+
+function updateTooltip(x, y, display_val) {
+  // + 15 for distance to cursor
+  var transl = 'translate(' + (x ) + 'px, ' + (y ) + 'px)';
+  tooltip.style.webkitTransform = transl;
+  tooltip.innerHTML = display_val;
+};
+
+
+
+
+
+      // make accessible for debugging
+      layer = heatmapLayer;
+
+      ///////LAYERS
+
+      var osmbaseLayer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+          maxZoom: 18
+        }
+      );
+
+  
+
+      var baseTree =
+             [
+                {
+                    label: 'BASEMAP',
+                    //layer: osmbaseLayer,
+                    children: [
+                        {label: 'openStreeMap', layer: osmbaseLayer, name: 'OpenStreeMap'},
+                        {label: 'Esri satellite Map', layer: baseLayer, name: 'Esri satellite Map'},
+                    ]
+                },
+                
+            ];
+
+            var baseTree2 =
+             [
+                {
+                  layer: osmbaseLayer,
+                   
+                    children: [
+                        
+                    ]
+                },
+                
+            ];
+     
+
+
+        var ctl = L.control.layers.tree(baseTree, null,
+            {
+                namedToggle: true,
+                //collapseAll: 'Collapse all',
+                //expandAll: 'Expand all',
+                collapsed: false,
+            });
+
+  //ctl.addTo(map).collapseTree().expandSelected(); 
+  
+  var hasAllUnSelected = function() {
+            return function(ev, domNode, treeNode, map) {
+                var anySelected = false;
+                function iterate(node)
+                {
+                    if (node.layer && !node.radioGroup) {
+                        anySelected = anySelected || map.hasLayer(node.layer);
+                    }
+                    if (node.children && !anySelected) {
+                        node.children.forEach(function(element) { iterate(element); });
+                    }
+                }
+                iterate(treeNode);
+                return !anySelected;
+            };
+        };
+            
+            
+            
+            
+
+  /////Data overlay
+
+
+        var lay = L.control.layers.tree(baseTree, overlaysTree,
+            {
+                namedToggle: true,
+                selectorBack: false,
+                closedSymbol: '&#8862; &#x1f5c0;',
+                openedSymbol: '&#8863; &#x1f5c1;',
+                //collapseAll: 'Collapse all',
+                //expandAll: 'Expand all',
+                collapsed: false,
+            });
+
+            lay.addTo(map).collapseTree().expandSelected().collapseTree(true);
+        L.DomEvent.on(L.DomUtil.get('onlysel'), 'click', function() {
+            lay.collapseTree(true).expandSelected(true);
+        });
+
+
+
+
+
+      var command = L.control({position: 'topright'});
+      var command2 = L.control({position: 'topleft'});
+
+      function load_home() {
+     document.getElementById("command2").innerHTML='<object type="text/html" data="Madamap2.html" ></object>';
+}
+
+///printer IMG
+
+
+
+///////////////
+
+
+command.onAdd = function (map) {
+    var div = L.DomUtil.create('div');
+    div.innerHTML = `
+    <div >
+      
+      <input type="file" id="file-selector" accept=".zip" style="display: none;" />
+      <input type="button" class="styled" value="Load ziped shapefile" onclick="document.getElementById('file-selector').click();" /><br><br>
+
+      <input type="file" id="file-selector2" accept=".tif" style="display: none;" />
+      <input type="button" class="styled" value="Load raster file" onclick="document.getElementById('file-selector2').click();" />
+
+ 
+    </div>`; 
+    return div;
+
+    
+    document.getElementById("command1").checked = true;
+        
+};
+command.addTo(map);
+
+      
+ 
+
+
+///file loader
+var contents="";
+var contents2="";
+var atribute=[];
+
+var longb=[];
+var latb=[];
+var name=[];
+var i=0;
+
+var markerArray = [];
+ var markerLocation;
+
+ var rasterfirstload=0;
+ var vectorfirstload=0;
+ var first="";
+
+///geotiff load
+
+document.getElementById("file-selector2").addEventListener("change", function(event) {
+        var file = event.target.files[0];
+      
+
+        var reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        reader.onloadend = function() {
+          var arrayBuffer = reader.result;
+          parseGeoraster(arrayBuffer).then(georaster => {
+
+          
+            /*
+                GeoRasterLayer is an extension of GridLayer,
+                which means can use GridLayer options like opacity.
+                Just make sure to include the georaster option!
+                http://leafletjs.com/reference-1.2.0.html#gridlayer
+            */
+            var layer = new GeoRasterLayer({
+                georaster: georaster,
+                opacity: 25,
+          
+               
+               
+                resolution: 250 // optional parameter for adjusting display resolution
+            });
+      
+            map.fitBounds(layer.getBounds());
+            layer.setZIndex(10);
+            layer.addTo(map);
+
+            ///push new tree
+
+            if (rasterfirstload==0)
+            {
+
+              var rasterTree =
+            {
+              label: 'Raster Layers',
+            selectAllCheckbox: 'Un/select all',
+            children: [
+
+            {label: file.name, layer: layer },
+    
+              ]
+        }
+
+        overlaysTree.push(rasterTree);
+        rasterfirstload=1;
+
+        if(first ==""){
+          first="raster";
+        }
+        
+
+
+            }
+
+
+            else{
+
+        if(first=="raster"){
+          var objchild={label: file.name, layer: layer };
+          overlaysTree[1].children.push(objchild);
+       
+        }
+
+        if(first=="vector"){
+          var objchild={label: file.name, layer: layer };
+          overlaysTree[2].children.push(objchild);
+     
+        }
+       
+
+          }
+
+
+            
+
+           lay.setOverlayTree(overlaysTree);
+          
+
+
+       
+          });
+        };
+      });
+
+
+////shp load
+
+
+
+
+  const fileSelector = document.getElementById('file-selector');
+  fileSelector.addEventListener('change', (event) => {
+    const fileList = event.target.files[0];
+    var reader = new FileReader(); 
+    reader.onload = function(event) { 
+        
+       contents = event.target.result;
+
+
+        var shapfile = new L.Shapefile(contents, {      
+          
+          style: {
+    "color": "#000000",
+    "fill": "none",
+    "weight": 2
+  },
+
+ 
+  
+  onEachFeature: function(feature, layer) {
+
+  
+
+    if (feature.properties && feature.properties.name) {
+
+           
+            label = String(feature.properties.name);
+
+        
+            //layer.bindPopup(feature.properties.name).openTooltip();
+            var element = document.getElementById(".leaflet-tooltip");
+          
+            //element.classList.remove("background-color");
+
+
+            layer.bindPopup(layer.feature.properties.name, {permanent: true, opacity: 5}).openTooltip();
+        
+
+        }
+
+
+   
+
+  
+
+
+      }
+
+  
+});
+
+
+
+
+    shapfile.addTo(map);
+
+
+    if (vectorfirstload==0)
+            {
+
+              var rasterTree =
+            {
+              label: 'Vector Layers',
+            selectAllCheckbox: 'Un/select all',
+            children: [
+
+            {label: fileList.name, layer: shapfile },
+    
+              ]
+        }
+
+        overlaysTree.push(rasterTree);
+        vectorfirstload=1;
+
+        if(first ==""){
+          first="vector";
+        }
+        
+
+
+            }
+
+
+            else{
+
+        if(first=="vector"){
+          var objchild={label: fileList.name, layer: shapfile };
+          overlaysTree[1].children.push(objchild);
+        
+        }
+
+        if(first=="raster"){
+          var objchild={label: fileList.name, layer: shapfile };
+          overlaysTree[2].children.push(objchild);
+         
+        }
+       
+
+          }
+
+
+
+           lay.setOverlayTree(overlaysTree);
+
+
+    var long= longb;
+    var lat= latb;
+
+
+  const t= shapfile.addTo(map);
+
+  if(t==null){
+  
+    console.log("LOAD ZIP FILE");
+  }
+    }; 
+
+reader.readAsArrayBuffer(fileList);
+
+/// attribue
+
+
+          
+ 
+
+  });
+
+
+
+     }
+
+             ///show value
+
+    
+      
+ 
+
+
+}
+
+loadcor();
+
+
+    </script>
+
+
+
+  </body>
+</html>

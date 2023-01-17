@@ -1,0 +1,124 @@
+.leaflet-control-layers-toggle.leaflet-layerstree-named-toggle {
+    margin: 2px 5px;
+    width: auto;
+    height: auto;
+    background-image: none;
+}
+
+.leaflet-layerstree-node {
+}
+
+.leaflet-layerstree-header input{
+    margin-left: 0px;
+}
+
+
+.leaflet-layerstree-header {
+}
+
+.leaflet-layerstree-header-pointer {
+    cursor: pointer;
+}
+
+.leaflet-layerstree-header label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.leaflet-layerstree-header-label {
+}
+
+.leaflet-layerstree-header-name {
+}
+
+.leaflet-layerstree-header-space {
+}
+
+.leaflet-layerstree-children {
+    padding-left: 10px;
+}
+
+.leaflet-layerstree-children-nopad {
+    padding-left: 0px;
+}
+
+.leaflet-layerstree-closed {
+}
+
+.leaflet-layerstree-opened {
+}
+
+.leaflet-layerstree-hide {
+    display: none;
+}
+
+.leaflet-layerstree-nevershow {
+    display: none;
+}
+
+.leaflet-layerstree-expand-collapse {
+    cursor: pointer;
+}
+
+
+
+.live-chat-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .live-chat-btn.live-chat-opened {
+    background-color: transparent;
+  }
+  .live-chat-btn.live-chat-opened .live-chat-text {
+    display: none;
+  }
+  .live-chat-btn:not(.live-chat-opened) ~ #get-notification {
+    display: none;
+  }
+  
+  .live-chat-icon {
+    color: white;
+    border-radius: 610%;
+    padding: 12px 12px;
+    font-size: 26px;
+  }
+  .live-chat-icon.live-chat-has-notifications::after {
+    content: attr(data-notifications);
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 18px;
+    font-family: "FS Elliot Web Regular", "Arial", arial, sans-serif;
+    font-weight: bold;
+    min-width: 25px;
+    width: auto;
+    height: 25px;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+  }
+  
+  .live-chat-icon-online {
+    background-color: #0091da;
+  }
+  
+  .live-chat-icon-offline {
+    background-color: #e6e6e6;
+  }
+  
+ 
+  
+  
+  
+ 
+ 
+  
+
+ 

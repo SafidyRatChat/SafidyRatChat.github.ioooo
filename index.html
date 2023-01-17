@@ -1,0 +1,229 @@
+<<<<<<< HEAD
+# SafidyRatChat.github.io
+=======
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Log in LBMap</title>
+	<link rel="stylesheet" type="text/css" href="css/log/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+ 
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    
+
+	<div class="main">
+   
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+          <div class="Text">
+            Natao ity mba hahafahantsika mifampiresaka sy mifampizara kokoa 
+          </div>
+					<input id="display_name"type="text" name="txt" placeholder="User name" required="">
+					<input id="l_email" type="email" name="email" placeholder="Email" required="">
+					<input id="l_password" type="password" name="pswd" placeholder="Password min 6 characters" required="">
+          <input id="v_password" type="password" name="pswd" placeholder="confirm Password" required="">
+					<button id="sign_up" type="button">Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input id="log_email" type="email" name="email" placeholder="Email" required="">
+					<input id ="log_password" type="password" name="pswd" placeholder="Password" required="">
+                    <button id="sign_in" type="button">Sign in</button>
+				</form>
+			</div>
+	</div>
+
+    <script>
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDJoAthfAwVbe5UDQ2VdnvCt08BzwiZj04",
+    authDomain: "ligne-de-base.firebaseapp.com",
+    projectId: "ligne-de-base",
+    storageBucket: "ligne-de-base.appspot.com",
+    messagingSenderId: "917214705951",
+    appId: "1:917214705951:web:09ad011d31c1726779182a",
+    measurementId: "G-XW0TFM93HK"
+  };
+  
+
+  // Initialize Firebase
+  const app= firebase.initializeApp(firebaseConfig);
+
+
+  ///database
+
+
+  const db = firebase.database();
+
+  ///////////
+function current_user(){
+  const user = firebase.auth().currentUser;
+  if (user) {
+  // User is signed in, see docs for a list of available properties
+  // https://firebase.google.com/docs/reference/js/firebase.User
+  // ...
+ 
+} else {
+  // No user is signed in.
+}
+}
+
+document.getElementById("sign_up").addEventListener("click", create_acount);
+
+
+document.getElementById("sign_in").addEventListener("click", sign_in);
+
+
+function create_acount(){
+
+
+var lemail=document.getElementById("l_email").value;
+var lpassword=document.getElementById("l_password").value;
+var vpassword=document.getElementById("v_password").value;
+
+if(lpassword.length<=6){
+  $('#l_password').addClass('wrongpwrd');
+
+}
+
+
+if(lemail.split('@').length<2){
+  $('#l_email').addClass('wrongpwrd');
+}
+
+if(lpassword===vpassword || lpassword.lemail<=6 || lemail.split('@').length<2){
+
+  firebase.auth().createUserWithEmailAndPassword(lemail, lpassword)
+  .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+
+    const userr = firebase.auth().currentUser;
+        return userr.updateProfile({
+          displayName: document.getElementById("display_name").value
+        })
+
+        var dispname=firebase.auth().currentUser.displayName;
+
+///loag page and pass name/////////////////////
+var canvass=document.getElementById("Extracted_curve");
+localStorage.setItem("displayname", dispname);
+
+window.location = 'map.html';
+
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    
+
+    // ..
+  });
+
+}
+
+else{
+  $('#v_password').addClass('wrongpwrd');
+}
+
+
+
+
+}
+
+
+function sign_in(){
+    var email=document.getElementById("log_email").value;
+    var password=document.getElementById("log_password").value;
+
+    //console.log("sign with:"+ password+email);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+
+    const userr = firebase.auth().currentUser;
+
+   
+    var dispname=firebase.auth().currentUser.displayName;
+
+    ///loag page and pass name/////////////////////
+localStorage.setItem("displayname", dispname);
+    
+window.location = 'map.html';
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  
+    if(errorMessage.includes('The password')){
+
+      $('#log_password').addClass('wrongpwrd');
+    
+
+      
+    }
+
+    else if(errorMessage.includes('The email address')){
+    
+
+      //document.getElementById("log_email").addEventListener('input',$('#log_email').addClass('wrongpwrd2') );
+      $('#log_email').addClass('wrongpwrd');
+     
+
+    
+    }
+  
+    
+  });
+
+}
+
+$('#log_email').click(function(){
+        $('#log_email').removeClass('wrongpwrd');
+  // action goes here!!
+});
+
+$('#log_password').click(function(){
+        $('#log_password').removeClass('wrongpwrd');
+  // action goes here!!
+});
+$('#l_email').click(function(){
+        $('#l_email').removeClass('wrongpwrd');
+  // action goes here!!
+});
+
+$('#l_password').click(function(){
+        $('#l_password').removeClass('wrongpwrd');
+  // action goes here!!
+});
+
+v_password
+$('#v_password').click(function(){
+        $('#v_password').removeClass('wrongpwrd');
+  // action goes here!!
+});
+
+    </script>
+</body>
+</html>
+>>>>>>> kk

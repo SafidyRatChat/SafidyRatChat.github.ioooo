@@ -9,6 +9,12 @@
     cursor: default;
     z-index: 9999;
     box-shadow: #222 -1px -1px 20px 0px;
+    width: 100%;
+    max-width: 750px;
+    max-height: 300 px;
+
+    min-width: 20em;
+    min-height: 20em
 }
 
 .leaflet-menu-contents {

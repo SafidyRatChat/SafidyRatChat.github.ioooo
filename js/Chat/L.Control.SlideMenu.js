@@ -35,7 +35,7 @@ L.Control.SlideMenu = L.Control.extend({
         link.title = 'Menu';
         L.DomUtil.create('span', this.options.icon, link);
 
-        this._menu = L.DomUtil.create('div', 'leaflet-menu col-12 col-md-6 ', map._container);
+        this._menu = L.DomUtil.create('div', 'leaflet-menu  col-12  col-md-6 ', map._container);
 
         this._menu.style.width = this.options.width;
         this._menu.style.height = this.options.height;
@@ -73,7 +73,7 @@ L.Control.SlideMenu = L.Control.extend({
             }
         }
 
-        var closeButton = L.DomUtil.create('button', 'leaflet-menu-close-button', this._menu);
+        var closeButton = L.DomUtil.create('button', 'leaflet-menu-close-button float-right', this._menu);
 
         closeButton.style.fontSize = this.options.icon_close.size;
         closeButton.style.color = this.options.icon_close.color;
@@ -99,7 +99,7 @@ L.Control.SlideMenu = L.Control.extend({
             }
         }
 
-        this._contents = L.DomUtil.create('div', 'leaflet-menu-contents', this._menu);
+        this._contents = L.DomUtil.create('div', 'leaflet-menu-contents ', this._menu);
         this._contents.innerHTML = this._innerHTML;
         this._contents.style.clear = 'both';
 

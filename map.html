@@ -402,8 +402,6 @@ let contents = `<div class="container ">
             <div class="settings-tray">
               <img class="profile-image" src="https://randomuser.me/api/portraits/men/39.jpg" alt="">
               <span class="settings-tray--right">
-                <i class="material-icons">cached</i>
-                <i class="material-icons">message</i>
                 <i class="material-icons">menu</i>
               </span>
             </div>
@@ -413,6 +411,9 @@ let contents = `<div class="container ">
                 <input placeholder="Search here" type="text">
               </div>
             </div>
+
+
+          <div id="style-5" class="vertical-scrollable" >
             <div class="friend-drawer friend-drawer--onhover">
               <img class="profile-image" src="https://randomuser.me/api/portraits/men/20.jpg" alt="">
               <div class="text">
@@ -448,10 +449,11 @@ let contents = `<div class="container ">
               </div>
               <span class="time text-muted small">13:21</span>
             </div>
+          </div>
             
             
           </div>
-          <div class="col-md-9">
+          <div class="col-md-9 ">
             <div class="settings-tray">
                 <div class="friend-drawer no-gutters friend-drawer--grey">
                 <img class="profile-image" src="https://randomuser.me/api/portraits/men/30.jpg" alt="">
@@ -460,13 +462,12 @@ let contents = `<div class="container ">
                   <p class="text-muted">Layin' down the law since like before Christ...</p>
                 </div>
                 <span class="settings-tray--right">
-                  <i class="material-icons">cached</i>
-                  <i class="material-icons">message</i>
                   <i class="material-icons">menu</i>
                 </span>
               </div>
             </div>
-            <div class="chat-panel">
+            
+            <div id="style-5" class="chat-panel  vertical-scrollable  " >
               <div class="row no-gutters">
                 <div class="col-md-3">
                   <div class="chat-bubble chat-bubble--left">
@@ -509,6 +510,38 @@ let contents = `<div class="container ">
                   </div>
                 </div>
               </div>
+              <div class="row no-gutters">
+                <div class="col-md-3 offset-md-9">
+                  <div class="chat-bubble chat-bubble--right">
+                    Hello dude!
+                  </div>
+                </div>
+              </div>
+
+              <div class="row no-gutters">
+                <div class="col-md-3 offset-md-9">
+                  <div class="chat-bubble chat-bubble--right">
+                    Hello dude!
+                  </div>
+                </div>
+              </div>
+
+              <div class="row no-gutters">
+                <div class="col-md-3 offset-md-9">
+                  <div class="chat-bubble chat-bubble--right">
+                    Hello dude!
+                  </div>
+                </div>
+              </div>
+
+              <div class="row no-gutters">
+                <div class="col-md-3 offset-md-9">
+                  <div class="chat-bubble chat-bubble--right">
+                    Hello dude!
+                  </div>
+                </div>
+              </div>
+
               <div class="row no-gutters">
                 <div class="col-md-3 offset-md-9">
                   <div class="chat-bubble chat-bubble--right">
@@ -518,12 +551,13 @@ let contents = `<div class="container ">
               </div>
               
             </div>
+         
         
          
             <div class="row no-gutters ">
                 <div class="col-12 ">
                   
-                  <div class="chat-box-tray  align-items-end ">
+                  <div class="chat-box-tray   ">
                     <div id="nnnnn"></div>
 
                     
@@ -537,7 +571,8 @@ let contents = `<div class="container ">
                   </div>
 
                 </div>
-             </div> 
+             </div>
+          
             
 
 
@@ -629,7 +664,7 @@ let contents = `<div class="container ">
 $(document).ready(function() {
 	$("#emojionearea1").emojioneArea({
   	
-		pickerPosition: "left",
+		pickerPosition: "top",
     tonesStyle: "bullet",
 		events: {
          	keyup: function (editor, event) {d

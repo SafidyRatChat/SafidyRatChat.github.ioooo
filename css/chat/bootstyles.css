@@ -171,7 +171,7 @@
 
   .vertical-scrollable {
     overflow-y: auto;
-   max-height: 500px;
+   max-height: 400px;
 }
 
 .vertical-scrollable:active::-webkit-scrollbar-thumb,

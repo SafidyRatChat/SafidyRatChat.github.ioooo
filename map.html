@@ -398,14 +398,14 @@ const left = '<div class="header">Slide Menu (Left)</div>';
 const right = '<div class="header"></div>';
 let contents = `<div class="container ">
         <div class="row no-gutters ">
-          <div class="col-md-3 border-right">
+          <div class="col-md-3 border-right d-none d-sm-none d-md-block">
             <div class="settings-tray">
               <img class="profile-image" src="https://randomuser.me/api/portraits/men/39.jpg" alt="">
               <span class="settings-tray--right">
                 <i class="material-icons">menu</i>
               </span>
             </div>
-            <div class="search-box">
+            <div class="search-box d-none d-sm-none d-md-block">
               <div class="input-wrapper">
                 <i class="material-icons">search</i>
                 <input placeholder="Search here" type="text">
@@ -467,7 +467,7 @@ let contents = `<div class="container ">
               </div>
             </div>
             
-            <div id="style-5" class="chat-panel  vertical-scrollable  " >
+            <div id="style-5" class="chat-panel mh-75 vertical-scrollable  " >
               <div class="row no-gutters">
                 <div class="col-md-3">
                   <div class="chat-bubble chat-bubble--left">

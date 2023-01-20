@@ -10,13 +10,13 @@
     cursor: default;
     z-index: 9999;
     box-shadow: #222 -1px -1px 20px 0px;
-    height: fit-content;
-    border-radius: 25px
-  
+    border-radius: 25px;
+    height: 60%
 }
 
 .leaflet-menu-contents {
-    align-items: flex-start;
+  
+    position: relative;
 
 }
 

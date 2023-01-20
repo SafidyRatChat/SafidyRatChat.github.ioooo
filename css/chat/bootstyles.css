@@ -3,6 +3,7 @@
     background: rgb(255, 255, 255);
     padding: 0;
     border-radius: 7px;
+
     
   }
   
@@ -147,9 +148,10 @@
   }
   
   .chat-box-tray {
+    align-self: flex-end;
     background: #eee;
     display: flex;
-    align-items: baseline;
+    
     padding: 10px 15px;
   
     margin-top: 19px;
@@ -171,16 +173,17 @@
 
   .vertical-scrollable {
     overflow-y: auto;
-    max-height:50%;
+    max-height:35%;
    
 }
 
 .bott{
-  bottom:0;
+  margin-bottom: 0%;
 }
 
 .relativepos{
-  position: relative;
+  
+  
 }
 
 .vertical-scrollable:active::-webkit-scrollbar-thumb,

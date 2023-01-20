@@ -11,12 +11,13 @@
     z-index: 9999;
     box-shadow: #222 -1px -1px 20px 0px;
     border-radius: 25px;
-    height: 60%
+    height:50%
 }
 
 .leaflet-menu-contents {
   
-    position: relative;
+    
+    margin-bottom: 0%;
 
 }
 

@@ -151,11 +151,10 @@
     align-self: flex-end;
     background: #eee;
     display: flex;
-    
     padding: 10px 15px;
-  
     margin-top: 19px;
     bottom: 0;
+    border-radius: 20px;
   }
   .chat-box-tray input {
     margin: 0 10px;
@@ -166,6 +165,8 @@
     color: grey;
     font-size: 30px;
     vertical-align: middle;
+    border-radius: 10px;
+    left: 50%;
   }
   .chat-box-tray i:last-of-type {
     margin-left: 25px;
@@ -178,13 +179,60 @@
 }
 
 .bott{
-  margin-bottom: 0%;
+  
+  z-index: 9999;
 }
 
-.relativepos{
+.sticky {
+  position: sticky;
+  border-radius: 2px;
+  bottom: 5px;
   
+   
   
 }
+
+.mic{
+  background:green;
+  border-radius: 50%;
+  margin-top: 19px;
+  bottom: 0; 
+  border: 2px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle; 
+  padding: 10px 15px;
+}
+
+.mic i{
+  color: grey;
+    font-size: 30px;
+    vertical-align: middle;
+    border-radius: 10px;
+    left: 50%;
+}
+
+
+
+.overlay {
+  position: absolute;
+  
+  transform: translate3d(-50%, -50%, 0);
+  white-space: nowrap;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: pink;
+  outline: none;
+  pointer-events: auto;
+  transition: background .3s;
+}
+
+.relativpos{
+  position: relative;
+}
+
+
 
 .vertical-scrollable:active::-webkit-scrollbar-thumb,
 .vertical-scrollable:focus::-webkit-scrollbar-thumb,
